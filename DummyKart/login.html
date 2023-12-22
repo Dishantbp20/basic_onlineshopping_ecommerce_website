@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Dizon.com</title>
+   <link rel="stylesheet" href="Dstyle.css">
+   <link rel="icon" href="Dizon.png">
+   <style>
+    p{
+        justify-content: center;
+        display: flex;
+    }
+    #myinp{
+        margin-right:0px;
+        display: flex;
+        justify-content:flex-end;
+    }
+   </style>
+</head>
+<body>
+    <img src="/DummyKart/images/logo.jpg">
+    <form id="forms">
+        <p>Login Page</p>
+        
+        <input type="email" id="email" placeholder="email" /> <br /><br />
+        <input type="password" id="pass" placeholder="password" /> 
+        
+        <label for="myinp">Show Password</label>
+        <input type="checkbox" value="show password" id="myinp" onclick="myfun()">
+        <br><br>
+        <input type="submit" value="Login">        
+        
+        
+        
+        
+    </form>
+    <p>Don't have account <a href="/DummyKart/registration.html" target="_self">Register here</a></p>
+    <script>
+        function myfun() {
+            var x=document.getElementById('pass')
+            if(x.type==="password")
+            {
+                x.type="text"
+            }
+            else{
+                x.type="password"
+            }
+        }
+        var form=document.getElementById('form')
+        form.addEventListener('submit',e=>{
+            e.preventDefault()
+            // user input
+            var umail=document.getElementById('email').value
+            var upassword=document.getElementById('pass').value
+            // local storage 
+            var mail=localStorage.getItem('mail')
+            var password=localStorage.getItem('password')
+            if(umail=="" && upassword=="")
+            {
+                alert('fields cannot be empty')
+            }
+            else if(umail!="" && upassword==""){
+                alert('password cannot be empty')
+            }
+            else if(umail=="" && upassword!=""){
+                alert('mail cannot be empty')
+            }
+            else{
+                if(umail!=mail && upassword!=password)
+                {
+                    alert('mail and password is not matching')
+                }
+                else if(umail!=mail && upassword==password)
+                {
+                    alert('mail is not matching')
+                }
+                else if(umail==mail && upassword!=password)
+                {
+                    alert('password is not matching')
+                }
+                else{
+                    alert('mail and password is matching')
+                    open('/',"_self")
+                }
+               
+            }
+            
+        })
+    </script>
+    
+</body>
+</html>

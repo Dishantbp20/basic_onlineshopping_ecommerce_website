@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Dizon.com</title>
+   <link rel="stylesheet" href="Dstyle.css">
+   <link rel="icon" href="Dizon.png">
+</head>
+<body>
+    <img src="/DummyKart/images/logo.jpg">
+    <form id="forms">
+        <p>Create Account</p>
+        <input type="text"     id="name" placeholder="name" /> <br /><br />
+      <input type="email"    id="mail" placeholder="email" /> <br /><br />
+      <input type="password" id="pass" placeholder="password" /> <br /><br />
+      <input type="password" id="cpass" placeholder="recheck-password"/><br /><br />
+      
+      
+        <select class="monum" >
+            <option>In +91</option>
+            <option>Afganistan +93</option>
+            <option>jamcia +1</option>
+            <option>Australia +61</option>
+            <option>Germeny +49</option>
+            <option>china +86</option>
+        </select>
+        <input type="tel"  name="mobilenumber" id="monum" required><br>
+        <label for="add">Address:</label><br>
+        <textarea id="add"></textarea>
+        
+        <em>Passwords must be at least 6 characters.</em><br>
+        <p class="para1">By enrolling your mobile phone number, 
+            you consent to receive automated security
+             notifications via text message from Dizon. 
+             Message and data rates may apply.</p><br>
+        <input type="submit" id="submit" value="Register"><hr>
+        <p class="para2">By creating an account or logging in, you agree to DummyKart’s <a href="conditon.html">Conditions of Use</a> and <a href="privacy.html">Privacy Policy.</a></p>
+        
+        
+    </form>
+    
+    <script>
+        function show()
+        {
+          var x=document.getElementById('pass')
+          var y=document.getElementById('cpass')
+          if(x.type==="password" && y.type==="password")
+          {
+            x.type="text"
+            y.type="text"
+          }
+          else{
+            x.type="password"
+            y.type="password"
+          }
+        } 
+        
+    // form validiation
+    var forms=document.getElementById('form')
+    // giving one event
+    forms.addEventListener('submit',e=>{
+      e.preventDefault()
+      // reading values from user
+      var nm=document.getElementById("name").value
+      var ml=document.getElementById("mail" ).value
+      var ps=document.getElementById("pass" ).value
+      var cps=document.getElementById("cpass").value
+      // conditions
+      if(nm=='' && ml=='' && ps=='' && cps=='')
+      {
+        alert('fields can not be empty')
+      }
+      else if(nm=='' && ml!='' && ps!='' && cps!='')
+      {
+        alert('name can not be empty')
+      }
+      else if(nm!='' && ml=='' && ps!='' && cps!='')
+      {
+        alert('mail can not be empty')
+      }
+      else if(nm!='' && ml!='' && ps=='' && cps!='')
+      {
+        alert('password can not be empty')
+      }
+      else if(nm!='' && ml!='' && ps!='' && cps=='')
+      {
+        alert('confirm-password can not be empty')
+      }
+      else if(nm!='' && ml=='' && ps=='' && cps=='')
+      {
+        alert('only name field is filled please fill remaining fields')
+      }
+      else if(nm=='' && ml!='' && ps=='' && cps=='')
+      {
+        alert('only email field is filled please fill remaining fields')
+      }
+      else if(nm=='' && ml=='' && ps!='' && cps=='')
+      {
+        alert('only password field is filled please fill remaining fields')
+      }
+      else if(nm=='' && ml=='' && ps=='' && cps!='')
+      {
+        alert('only confirm-password is field filled please fill remaining fields')
+      }
+      
+      else{
+        if(ps!=cps)
+        {
+          alert('password and confirm-password is not matching')
+        }
+        else{
+          localStorage.setItem('mail',ml)
+          localStorage.setItem('password',ps)
+          // session storage
+          sessionStorage.setItem('mail',ml)
+          sessionStorage.setItem('password',ps)
+          confirm('registered successfuly')
+          open('./login.html')
+        }
+      }
+      
+    })
+    </script>
+    
+</body>
+</html>
